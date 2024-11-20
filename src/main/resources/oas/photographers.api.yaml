@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Photographers API
+  description: |-
+    Photographers API
+  version: 1.0.11
+servers:
+  - url: http://localhost:8070/api/v1
+paths:
+  /api/photographers:
+    get:
+      tags:
+        - photographers
+      summary: Get All Photographers
+      description: Get All Photographers
+      operationId: getAllPhotographers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Photographer'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+
+components:
+  schemas:
+    Photographer:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone_number:
+          type: string
+        event_type:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        avatar:
+          type: string
+
+    Event:
+      type: string
+      enum:
+        - wedding
+        - birthdays
+        - wildlife
+        - sports

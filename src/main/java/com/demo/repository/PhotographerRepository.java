@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PhotographerRepository extends JpaRepository<Photographer, Integer> {
+public interface PhotographerRepository extends JpaRepository<Photographer, Integer>, PhotographerCustomRepository {
 
     // Custom query to find all users who are photographers
     List<Photographer> findByEventTypes_EventIn(List<String> eventTypes);

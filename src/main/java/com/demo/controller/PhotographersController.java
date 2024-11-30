@@ -75,21 +75,21 @@ public class PhotographersController {
         return ResponseEntity.status(HttpStatusCode.valueOf(200)).build();
     }
 
-
-    @GetMapping
-    public CollectionModel<EntityModel<TaskDto>> getAllTasks() {
-        List<TaskDto> tasks = fetchAllTasks(); // Assume this fetches the tasks
-
-        List<EntityModel<TaskDto>> taskModels = tasks.stream().map(task -> {
-            EntityModel<TaskDto> taskModel = EntityModel.of(task);
-            taskModel.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
-                    .getTask(task.getId())).withSelfRel());
-            taskModel.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
-                    .getComments(task.getId())).withRel("comments"));
-            return taskModel;
-        }).toList();
-
-        return CollectionModel.of(taskModels, WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
-                .getAllTasks()).withSelfRel());
-    }
+//
+//    @GetMapping
+//    public CollectionModel<EntityModel<TaskDto>> getAllTasks() {
+//        List<TaskDto> tasks = fetchAllTasks(); // Assume this fetches the tasks
+//
+//        List<EntityModel<TaskDto>> taskModels = tasks.stream().map(task -> {
+//            EntityModel<TaskDto> taskModel = EntityModel.of(task);
+//            taskModel.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
+//                    .getTask(task.getId())).withSelfRel());
+//            taskModel.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
+//                    .getComments(task.getId())).withRel("comments"));
+//            return taskModel;
+//        }).toList();
+//
+//        return CollectionModel.of(taskModels, WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(TaskController.class)
+//                .getAllTasks()).withSelfRel());
+//    }
 }

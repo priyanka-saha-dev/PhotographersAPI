@@ -1,6 +1,5 @@
 package com.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
@@ -8,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import masking.CreditCardMaskingSerializer;
+import com.demo.masking.CreditCardMaskingSerializer;
 
 @Data
 @Builder
